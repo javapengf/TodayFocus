@@ -1,0 +1,175 @@
+/* ── Main window ── */
+#mainFrame {
+    background-color: #1E1E2E;
+    border-radius: 12px;
+}
+
+#titleBar {
+    background-color: #181825;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+#titleLabel {
+    color: #CDD6F4;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 4px;
+}
+
+#miniBtn, #closeBtn {
+    background-color: transparent;
+    color: #A6ADC8;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+#miniBtn:hover, #closeBtn:hover {
+    color: #F38BA8;
+    background-color: rgba(243, 139, 168, 0.15);
+    border-radius: 6px;
+}
+
+/* ── Input bar ── */
+#inputBar {
+    background-color: #1E1E2E;
+}
+
+#inputField {
+    background-color: #313244;
+    color: #CDD6F4;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+}
+
+#highBtn {
+    background-color: #F38BA8;
+    color: #1E1E2E;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+#highBtn:hover {
+    background-color: #FAB387;
+}
+
+/* ── Task list ── */
+#taskList {
+    background-color: #1E1E2E;
+    border: none;
+    outline: none;
+    padding: 4px;
+}
+#taskList::item {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+#taskList::item:selected {
+    background-color: #313244;
+}
+QScrollBar:vertical {
+    background-color: #1E1E2E;
+    width: 6px;
+    border-radius: 3px;
+}
+QScrollBar::handle:vertical {
+    background-color: #45475A;
+    border-radius: 3px;
+    min-height: 20px;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+/* ── Task item ── */
+#taskItem {
+    background-color: #181825;
+    border-radius: 8px;
+    margin: 3px 2px;
+}
+#taskItem[priority="high"] {
+    border-left: 3px solid #F38BA8;
+}
+
+#taskCheck {
+    border: 2px solid #6C7086;
+    border-radius: 4px;
+    background: transparent;
+    color: transparent;
+    font-size: 12px;
+}
+#taskCheck:checked {
+    border: 2px solid #A6E3A1;
+    background-color: #A6E3A1;
+    color: #1E1E2E;
+}
+
+#taskText {
+    color: #CDD6F4;
+    font-size: 13px;
+}
+#taskText[done="true"] {
+    color: #6C7086;
+    text-decoration: line-through;
+}
+
+#delBtn {
+    background: transparent;
+    color: #6C7086;
+    border: none;
+    font-size: 14px;
+}
+#delBtn:hover {
+    color: #F38BA8;
+}
+
+#priorityDot {
+    color: #F38BA8;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* ── Footer ── */
+#footerBar {
+    background-color: #1E1E2E;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+#statsLabel {
+    color: #6C7086;
+    font-size: 12px;
+}
+
+/* ── Mini bar ── */
+#miniBar {
+    background-color: #1E1E2E;
+    border-radius: 8px;
+    border: 1px solid #45475A;
+}
+
+#miniIcon {
+    color: #4A90D9;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#miniCount {
+    color: #CDD6F4;
+    font-size: 12px;
+}
+
+#miniExpandBtn {
+    background: transparent;
+    color: #A6ADC8;
+    border: none;
+    font-size: 14px;
+}
+#miniExpandBtn:hover {
+    color: #89B4FA;
+}
