@@ -149,27 +149,17 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
 /* ── Mini bar ── */
 #miniBar {
     background-color: #1E1E2E;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #45475A;
 }
 
 #miniIcon {
     color: #4A90D9;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 #miniCount {
     color: #CDD6F4;
-    font-size: 12px;
-}
-
-#miniExpandBtn {
-    background: transparent;
-    color: #A6ADC8;
-    border: none;
-    font-size: 14px;
-}
-#miniExpandBtn:hover {
-    color: #89B4FA;
+    font-size: 13px;
 }

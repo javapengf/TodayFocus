@@ -2,8 +2,8 @@ from PyQt6.QtWidgets import QHBoxLayout, QLabel, QPushButton, QWidget
 from PyQt6.QtCore import QPoint, QPropertyAnimation, Qt, QTimer, pyqtSignal
 from PyQt6.QtGui import QFont
 
-SCREEN_EDGE_MARGIN = 2
-VISIBLE_EDGE = 15
+SCREEN_EDGE_MARGIN = 4
+VISIBLE_EDGE = 50
 
 
 class MiniBar(QWidget):
@@ -14,7 +14,6 @@ class MiniBar(QWidget):
         self.config = config
         self._hovered = False
         self._screen_geom = None
-        self._drag_offset = None
         self.setObjectName("miniBar")
         self.setWindowFlags(
             Qt.WindowType.FramelessWindowHint
@@ -22,7 +21,7 @@ class MiniBar(QWidget):
             | Qt.WindowType.Tool
         )
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
-        self.setFixedSize(160, 36)
+        self.setFixedSize(200, 44)
         self._init_ui()
         self._init_position()
 
@@ -35,18 +34,10 @@ class MiniBar(QWidget):
         icon_label.setFont(QFont("Segoe UI", 14, QFont.Weight.Bold))
         hbox.addWidget(icon_label)
 
-        self.count_label = QLabel("0 tasks")
+        self.count_label = QLabel("0 / 0")
         self.count_label.setObjectName("miniCount")
+        self.count_label.setFont(QFont("Segoe UI", 12))
         hbox.addWidget(self.count_label)
-
-        hbox.addStretch()
-
-        expand_btn = QPushButton("^")
-        expand_btn.setObjectName("miniExpandBtn")
-        expand_btn.setFixedSize(24, 24)
-        expand_btn.setToolTip("Expand")
-        expand_btn.clicked.connect(self.switch_to_main.emit)
-        hbox.addWidget(expand_btn)
 
     def _init_position(self):
         from PyQt6.QtWidgets import QApplication
@@ -88,24 +79,11 @@ class MiniBar(QWidget):
         self._anim.setEndValue(QPoint(target_x, target_y))
         self._anim.start()
 
-    # ── Click / Drag ──────────────────────────────
-
-    def mousePressEvent(self, event):
-        if event.button() == Qt.MouseButton.LeftButton:
-            self._drag_offset = event.globalPosition().toPoint() - self.frameGeometry().topLeft()
-        super().mousePressEvent(event)
-
-    def mouseMoveEvent(self, event):
-        if self._drag_offset is not None and event.buttons() & Qt.MouseButton.LeftButton:
-            self.move(event.globalPosition().toPoint() - self._drag_offset)
-        super().mouseMoveEvent(event)
+    # ── Click to expand ───────────────────────────
 
     def mouseReleaseEvent(self, event):
-        if self._drag_offset is not None:
-            moved = event.globalPosition().toPoint() - self.frameGeometry().topLeft() - self._drag_offset
-            if abs(moved.x()) < 5 and abs(moved.y()) < 5:
-                self.switch_to_main.emit()
-            self._drag_offset = None
+        if event.button() == Qt.MouseButton.LeftButton:
+            self.switch_to_main.emit()
         super().mouseReleaseEvent(event)
 
     # ── Update ────────────────────────────────────
