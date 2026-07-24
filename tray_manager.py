@@ -18,10 +18,12 @@ def _create_tray_icon():
 
 class TrayManager(QObject):
     restore_requested = pyqtSignal()
+    history_requested = pyqtSignal()
 
-    def __init__(self, app):
+    def __init__(self, app, data_manager):
         super().__init__()
         self.app = app
+        self.dm = data_manager
 
         self.tray = QSystemTrayIcon()
         self.tray.setIcon(_create_tray_icon())
@@ -30,6 +32,10 @@ class TrayManager(QObject):
         menu = QMenu()
         show_action = menu.addAction("Show Focus")
         show_action.triggered.connect(self.restore_requested.emit)
+
+        history_action = menu.addAction("History")
+        history_action.triggered.connect(self.history_requested.emit)
+
         menu.addSeparator()
         quit_action = menu.addAction("Quit")
         quit_action.triggered.connect(self._quit_app)

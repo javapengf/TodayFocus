@@ -88,3 +88,6 @@ class DataManager:
     def get_stats(self):
         items = self._data["today_items"]
         return len(items), sum(1 for i in items if i["completed"])
+
+    def get_archive(self):
+        return list(self._data.get("archive", []))

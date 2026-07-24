@@ -92,9 +92,6 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
     border-radius: 8px;
     margin: 3px 2px;
 }
-#taskItem[priority="high"] {
-    border-left: 3px solid #F38BA8;
-}
 
 #taskCheck {
     border: 2px solid #6C7086;
@@ -153,13 +150,105 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
     border: 1px solid #45475A;
 }
 
-#miniIcon {
-    color: #4A90D9;
-    font-size: 16px;
-    font-weight: bold;
-}
-
 #miniCount {
     color: #CDD6F4;
     font-size: 13px;
+}
+
+/* ── Archive window ── */
+#archiveFrame {
+    background-color: #1E1E2E;
+    border-radius: 12px;
+}
+
+#archiveTitleBar {
+    background-color: #181825;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+#archiveTitleLabel {
+    color: #CDD6F4;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 4px;
+}
+
+#archiveCloseBtn, #archiveCopyBtn {
+    background-color: transparent;
+    color: #A6ADC8;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+#archiveCloseBtn:hover, #archiveCopyBtn:hover {
+    color: #F38BA8;
+    background-color: rgba(243, 139, 168, 0.15);
+    border-radius: 6px;
+}
+
+#archiveScroll {
+    background-color: #1E1E2E;
+    border: none;
+}
+
+#archiveContent {
+    background-color: #1E1E2E;
+}
+
+#archiveEmpty {
+    color: #6C7086;
+    font-size: 13px;
+    padding: 20px;
+}
+#archiveDateLabel {
+    color: #89B4FA;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px 8px 2px 8px;
+}
+
+#archiveItem {
+    background-color: #181825;
+    border-radius: 6px;
+    margin: 2px 4px;
+}
+#archiveCheck {
+    color: #6C7086;
+    font-size: 13px;
+    min-width: 18px;
+    text-align: center;
+}
+#archiveCheck[done="true"] {
+    color: #A6E3A1;
+}
+
+#archiveText {
+    color: #CDD6F4;
+    font-size: 13px;
+}
+#archiveText[done="true"] {
+    color: #6C7086;
+    text-decoration: line-through;
+}
+
+#archivePriorityDot {
+    color: #F38BA8;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+QMenu {
+    background-color: #1E1E2E;
+    border: 1px solid #45475A;
+    border-radius: 6px;
+    padding: 4px 0;
+}
+QMenu::item {
+    color: #CDD6F4;
+    padding: 6px 20px;
+    font-size: 13px;
+}
+QMenu::item:selected {
+    background-color: #313244;
 }

@@ -11,6 +11,7 @@ from data_manager import DataManager
 from main_window import MainWindow
 from mini_bar import MiniBar
 from tray_manager import TrayManager
+from archive_window import ArchiveWindow
 
 CONFIG_FILE = Path(__file__).parent / "config.json"
 
@@ -30,11 +31,13 @@ class FocusApp:
 
         self.main_win = MainWindow(self.dm)
         self.mini_bar = MiniBar(self.config)
-        self.tray = TrayManager(self.app)
+        self.archive_win = ArchiveWindow(self.dm)
+        self.tray = TrayManager(self.app, self.dm)
 
         self.main_win.switch_to_mini.connect(self._show_mini_hide_main)
         self.mini_bar.switch_to_main.connect(self._show_main_hide_mini)
         self.tray.restore_requested.connect(self._show_main_hide_mini)
+        self.tray.history_requested.connect(self._show_archive)
 
         self._setup_hotkey()
 
@@ -98,6 +101,11 @@ class FocusApp:
         self.main_win.show()
         self.main_win.activateWindow()
         self.main_win.raise_()
+
+    # ── History / Archive ─────────────────────────
+
+    def _show_archive(self):
+        self.archive_win.show()
 
     # ── Midnight reset ────────────────────────────
 
